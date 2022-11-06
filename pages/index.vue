@@ -3,7 +3,8 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <section class="featured-posts">
+    <PostList />
+    <!-- <section class="featured-posts">
       <PostPreview
         id="1"
         thumbnail="https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/10/genshin-impact-best-nahida-build.jpg"
@@ -21,9 +22,9 @@
         thumbnail="https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/10/genshin-impact-best-nahida-build.jpg"
         title="Hello there!"
         previewText="This is my third post!"
-      />
+      /> -->
 
-      <!-- <nuxt-link :to="'/posts/' + 1" class="post-preview">
+    <!-- <nuxt-link :to="'/posts/' + 1" class="post-preview">
         <article>
           <div
             class="post-thumbnail"
@@ -51,15 +52,17 @@
           </div>
         </article>
       </nuxt-link> -->
-    </section>
+    <!-- </section> -->
   </div>
 </template>
 
 <script>
-import PostPreviews from "@/components/Posts/PostPreview";
+// import PostPreviews from "@/components/Posts/PostPreview";
+import PostList from "@/components/Posts/PostList";
 export default {
   components: {
-    PostPreview: PostPreviews,
+    // PostPreview: PostPreviews,
+    PostList,
   },
 };
 </script>
@@ -71,7 +74,7 @@ export default {
   padding: 30px;
   box-sizing: border-box;
   background-image: url("~assets/images/genshin-impact.jpg");
-  ''background-position: center;
+  background-position: center;
   background-size: cover;
 }
 
