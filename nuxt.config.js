@@ -1,3 +1,4 @@
+const bodyParser = require("body-parser");
 export default {
   mode: "universal",
   /*
@@ -92,4 +93,11 @@ export default {
   // router: {
   //   middleware: "log",
   // },
+
+  // server middleware is a collection of node and express compatible middleware that will be executed prior to the nuxt rendering process
+  // the middleware listed in the server middleware will be executed from top to bottom
+  // register any express middleware that we want to run first, including our own middleware
+  // bodyparser middleware will give access to the request body
+  // body parser to parse incoming json body, and then add them to the body field on the incoming request object
+  serverMiddleware: [bodyParser.json(), "~/api"],
 };

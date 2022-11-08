@@ -139,6 +139,9 @@ const createStore = () => {
             //   "setLogoutTimer",
             //   result.data.expiresIn * 1000
             // );
+            return this.$axios.post("http://localhost:3000/api/track-data", {
+              data: "Authenticated!",
+            });
           })
           .catch((e) => console.log(e.response));
       },
@@ -193,8 +196,10 @@ const createStore = () => {
         vuexContext.commit("clearToken");
         Cookie.remove("jwt");
         Cookie.remove("expirationDate");
-        localStorage.removeItem("token");
-        localStorage.removeItem("expirationDate");
+        if (process.client) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("expirationDate");
+        }
       },
     },
     getters: {
