@@ -1,12 +1,15 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1 class="post-title">Title of the Post</h1>
+      <h1 class="post-title">{{ loadedPosts.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Last updated on XXX</div>
-        <div class="post-detail">Written by NAME</div>
+        <div class="post-detail">
+          <!-- add | date to register date filter -->
+          Last updated on {{ loadedPosts.updatedDate | date }}
+        </div>
+        <div class="post-detail">Written by {{ loadedPosts.author }}</div>
       </div>
-      <p class="post-content">Content of the post</p>
+      <p class="post-content">{{ loadedPosts.content }}</p>
     </section>
     <section class="post-feedback">
       <p>
@@ -19,6 +22,39 @@
   </div>
 </template>
 
+<script>
+export default {
+  async asyncData({ params, $axios }) {
+    const res = await $axios.get(
+      process.env.baseUrl + "/post/" + params.id + ".json"
+    );
+    console.log(params);
+    return { loadedPosts: res.data };
+  },
+  // override the setting in the nuxt.config.js per page level
+  head: {
+    title: "A Blog Post",
+  },
+
+  // asyncData(context) {
+  // setTimeout(() => {
+  //   callback(null, {
+  //     loadedPosts: {
+  //       id: "1",
+  //       title: "First Post (ID: " + context.route.params.id + ")",
+  //       previewText: "This is our first post!",
+  //       author: "kienyiep",
+  //       updatedDate: new Date(),
+  //       content: "Some dummy text",
+  //       thumbnailLink:
+  //         "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/10/genshin-impact-best-nahida-build.jpg",
+  //     },
+  //   });
+  //   // this.$route.params;
+  // }, 1000);
+  // }
+};
+</script>
 <style scoped>
 .single-post-page {
   padding: 30px;

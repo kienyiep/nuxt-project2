@@ -1,13 +1,15 @@
 <template>
   <section class="post-list">
     <PostPreview
-      id="1"
+      v-for="post in posts"
+      :key="post.id"
+      :id="post.id"
       :is-admin="isAdmin"
-      thumbnail="https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/10/genshin-impact-best-nahida-build.jpg"
-      title="Hello there!"
-      previewText="This is my first post!"
+      :thumbnail="post.thumbnailLink"
+      :title="post.title"
+      :previewText="post.previewText"
     />
-    <PostPreview
+    <!-- <PostPreview
       id="2"
       :is-admin="isAdmin"
       thumbnail="https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/10/genshin-impact-best-nahida-build.jpg"
@@ -20,7 +22,7 @@
       thumbnail="https://www.pcgamesn.com/wp-content/sites/pcgamesn/2022/10/genshin-impact-best-nahida-build.jpg"
       title="Hello there!"
       previewText="This is my third post!"
-    />
+    /> -->
   </section>
 </template>
 
@@ -34,6 +36,10 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false,
+    },
+    posts: {
+      type: Array,
+      required: true,
     },
   },
 };

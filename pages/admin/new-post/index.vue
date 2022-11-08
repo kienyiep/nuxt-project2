@@ -1,7 +1,7 @@
 <template>
   <div class="admin-new-post-page">
     <section class="new-post-form">
-      <AdminPostForm />
+      <AdminPostForm @submit="onSubmitted" />
       <!-- add prevent to prevent the default to send the http request -->
       <!-- <form @submit.prevent="onSave">
         <AppControlInput v-model="editedPost.author"
@@ -35,12 +35,31 @@
 <script>
 // import AppControlInput from "@/components/UI/AppControlInput";
 // import AppButton from "@/components/UI/AppButton";
+
 import AdminPostForm from "@/components/admin/AdminPostForm";
 export default {
+  layout: "admin",
   components: {
     AdminPostForm,
     // AppControlInput,
     // AppButton,
+  },
+  methods: {
+    onSubmitted(postData) {
+      // this.$axios
+      //   .post(
+      //     "https://nuxt-app-592d4-default-rtdb.asia-southeast1.firebasedatabase.app/post.json",
+      //     { ...postData, updatedDate: new Date() }
+      //   )
+      //   .then((result) => {
+      //     this.$router.push("/admin");
+      //   })
+      //   .catch((e) => console.log(e));
+
+      this.$store.dispatch("addPost", postData).then(() => {
+        this.$router.push("/admin");
+      });
+    },
   },
   // data() {
   //   return {

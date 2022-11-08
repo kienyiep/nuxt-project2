@@ -25,15 +25,20 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: "#fff" },
+  loading: { color: "#fff", height: "4px", duration: 5000 },
+  loadingIndicator: {
+    name: "circle",
+    color: "#fa923f",
+  },
   /*
    ** Global CSS
    */
-  css: [],
+  css: ["~assets/styles/main.css"],
   /*
    ** Plugins to load before mounting the App
+   run code before application start
    */
-  plugins: [],
+  plugins: ["~plugins/core-components.js", "~plugins/date-filter.js"],
   /*
    ** Nuxt.js dev-modules
    */
@@ -41,7 +46,17 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  // modules allow you to add convinience features to your nuxt app
+  // put credential: false because we dont want to pass any cookie and so on to the back end
+  modules: ["@nuxtjs/axios"],
+  axios: {
+    baseURL:
+      process.env.BASE_URL ||
+      "https://nuxt-app-592d4-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+    credential: false,
+  },
+
   /*
    ** Build configuration
    */
@@ -51,4 +66,28 @@ export default {
      */
     extend(config, ctx) {},
   },
+
+  env: {
+    baseUrl:
+      process.env.BASE_URL ||
+      "https://nuxt-app-592d4-default-rtdb.asia-southeast1.firebasedatabase.app",
+  },
+
+  // set the root directory, where all your nuxt folder, nuxt files and node_modules live in
+  // rootDir: "/my-app/",
+  //override some setting of the nuxt router
+  // router: {},
+  // nuxt will look into this folder for all the pages, folders, middleware folders and so on
+  //  if you want to have a different folder structure and put all these nuxt folders into a sub folder.
+  // srcDir: "client-app/",
+
+  transition: {
+    name: "fade",
+    mode: "out-in",
+  },
+  // run code before you enter any route
+  // add the middleware to all routes
+  // router: {
+  //   middleware: "log",
+  // },
 };
