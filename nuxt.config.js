@@ -71,6 +71,8 @@ export default {
     baseUrl:
       process.env.BASE_URL ||
       "https://nuxt-app-592d4-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+    fbAPIKey: "AIzaSyCq98lsI7hgm_gUQTbE2epP51u7DQKcbUw",
   },
 
   // set the root directory, where all your nuxt folder, nuxt files and node_modules live in
