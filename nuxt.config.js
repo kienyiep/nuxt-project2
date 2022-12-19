@@ -79,7 +79,16 @@ export default {
   // set the root directory, where all your nuxt folder, nuxt files and node_modules live in
   // rootDir: "/my-app/",
   //override some setting of the nuxt router
-  // router: {},
+  router: {
+    // base: "/my-app/", //
+    // extendRoutes(routes, resolve) {
+    //   routes.push({
+    //     path: "*",
+    //     component: resolve(__dirname, "pages/index.vue"),
+    //   });
+    // },
+    // linkActiveClass: "active",
+  },
   // nuxt will look into this folder for all the pages, folders, middleware folders and so on
   //  if you want to have a different folder structure and put all these nuxt folders into a sub folder.
   // srcDir: "client-app/",
