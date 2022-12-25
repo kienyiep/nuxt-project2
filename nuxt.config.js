@@ -1,6 +1,12 @@
 const bodyParser = require("body-parser");
 export default {
   mode: "universal",
+
+  target: "static",
+  ssr: false,
+  generate: {
+    fallback: true,
+  },
   /*
    ** Headers of the page
    */
