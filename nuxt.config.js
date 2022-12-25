@@ -83,7 +83,9 @@ export default {
     // base: "/my-app/", //
     // extendRoutes(routes, resolve) {
     //   routes.push({
-    //     path: "*",
+    //
+
+    path: "*",
     //     component: resolve(__dirname, "pages/index.vue"),
     //   });
     // },

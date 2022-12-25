@@ -17,8 +17,5 @@
     "js-cookie": "^3.0.1",
     "nuxt": "^2.0.0"
   },
-  "engines": {
-    "node": "14.x"
-  },
   "devDependencies": {}
 }
